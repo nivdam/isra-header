@@ -4,6 +4,8 @@ import { alpha, darken, lighten } from "@mui/material/styles";
 
 import Header from "./views/header/header.component";
 import Navigation from "./views/navigation/Navigation";
+import ResponsiveDrawer from "./views/responsiveDrawer/ResponsiveDrawer";
+
 
 export default function App() {
   return (
@@ -20,11 +22,13 @@ export default function App() {
       </Typography>
 
       <Typography variant="h5" component="h2" sx={{ color: "secondary.main" }}>
-        Start editing to see some magic happen!
+        Start editing to see some magic happen!!!!
       </Typography>
 
       <Header />
-      <Navigation />
+			xc xczv zxcv zxcv zxcv
+      {/* <Navigation /> */}
+			{/* <ResponsiveDrawer /> */}
     </div>
   );
 }

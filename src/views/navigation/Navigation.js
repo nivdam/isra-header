@@ -9,32 +9,35 @@ import CssBaseline from "@mui/material/CssBaseline";
 import {
   Toolbar,
   IconButton,
-  MenuIcon,
   MenuList,
-  Divider,
-  ListItemIcon,
-  ListItemText,
   Link
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+import InboxIcon from '@mui/icons-material/Inbox';
+import DraftsIcon from '@mui/icons-material/Drafts';
+
 import HomeIcon from "@mui/icons-material/Menu";
 
-import {
-  AccessibleForwardIcon,
-  AirlineSeatLegroomExtraIcon,
-  BathtubIcon,
-  MenuItem
-} from "@mui/icons-material";
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuItem from '@mui/icons-material/List';
+import AccessibleForwardIcon from '@mui/icons-material/AccessibleForward';
+import AirlineSeatLegroomExtraIcon from '@mui/icons-material/AirlineSeatLegroomExtra';
+import BathtubIcon from '@mui/icons-material/Bathtub';
 
 // import { Link, useLocation } from "react-router-dom";
 
 import { useStyles } from "./NavigationStyling";
 
 export default function Navigation(props) {
-  const websiteTitle = "Hello World!";
-
   const classes = useStyles();
+
   const [open, setDeskDrawOpen] = React.useState(true);
   const [mobileDrawerState, setmobileDrawerState] = React.useState(false);
 
@@ -48,38 +51,48 @@ export default function Navigation(props) {
     open === false ? setDeskDrawOpen(true) : setDeskDrawOpen(false);
   };
 
-  function renderNavItems(key) {
+  const renderNavItems = () => {
     return (
       <>
-        <MenuList key={key}>
-          <MenuItem component={Link} href="/">
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </MenuItem>
-          <Divider />
-          <MenuItem component={Link} href="/Page1">
-            <ListItemIcon>
-              <AccessibleForwardIcon />
-            </ListItemIcon>
-            <ListItemText primary="Lorem ipsum" />
-          </MenuItem>
-          <Divider />
-          <MenuItem component={Link} href="/Page2">
-            <ListItemIcon>
-              <AirlineSeatLegroomExtraIcon />
-            </ListItemIcon>
-            <ListItemText primary="Cute Cat" />
-          </MenuItem>
-          <Divider />
-          <MenuItem component={Link} href="/Page3">
-            <ListItemIcon>
-              <BathtubIcon />
-            </ListItemIcon>
-            <ListItemText primary="Not Found" />
-          </MenuItem>
-        </MenuList>
+				<nav aria-label="main mailbox folders">
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Inbox" />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <DraftsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Drafts" />
+            </ListItemButton>
+          </ListItem>
+
+        </List>
+      </nav>
+      <Divider />
+			
+      <nav aria-label="secondary mailbox folders">
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemText primary="Trash" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton component="a" href="#simple-list">
+              <ListItemText primary="Spam" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </nav>
+
         <Divider />
       </>
     );
@@ -88,6 +101,7 @@ export default function Navigation(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
+
       <AppBar position="fixed">
         <Toolbar>
           <IconButton
@@ -99,6 +113,7 @@ export default function Navigation(props) {
           >
             <MenuIcon />
           </IconButton>
+					
           <IconButton
             className={classes.toggleMobileMenuBtn}
             color="inherit"
@@ -109,10 +124,12 @@ export default function Navigation(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap style={{ color: "white" }}>
-            {websiteTitle}
+            Hello World!
           </Typography>
         </Toolbar>
       </AppBar>
+
+
       <Drawer
         key="desktopDrawer"
         className={classes.desktopDrawer}
@@ -130,15 +147,15 @@ export default function Navigation(props) {
         </div>
       </Drawer>
 
-      {/* Mobile drawer */}
 
+      {/* Mobile drawer */}
       <Drawer
         key="mobileDrawer"
         anchor="left"
         open={mobileDrawerState}
         onClose={() => handleMobileDrawerToggle(false)}
       >
-        <Toolbar>{websiteTitle}</Toolbar>
+        <Toolbar>Toolbar text</Toolbar>
         {renderNavItems("desktopNav")}
       </Drawer>
 
